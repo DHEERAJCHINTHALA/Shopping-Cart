@@ -147,6 +147,9 @@
   width: 25px;
   color: white;
 }
+.btn-close{
+  background-color: white;
+}
 .price-content{
   float: right;
   width: 158px;
