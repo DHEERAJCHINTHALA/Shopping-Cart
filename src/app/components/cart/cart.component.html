@@ -1,0 +1,93 @@
+<div class="container-fluid">
+  <div class="nav">
+    <div class="nav-items-bar">
+      <mat-icon
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRight"
+        aria-controls="offcanvasRight"
+        matBadge="{{ resultcount }}"
+        style="cursor: pointer; color: white"
+      >
+        shopping_cart
+      </mat-icon>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="gpcard" *ngFor="let item of cart">
+      <div class="gpcard-header">
+        <img src="{{ item.Image }}" alt="{{ item.Name }} Image" />
+      </div>
+      <div class="gpcard-body">
+        <p>
+          <b>{{ item.Name }}</b>
+        </p>
+        <p>
+          Price: <b>{{ item.Price }}</b>
+        </p>
+      </div>
+      <div class="gpcard-footer">
+        <button class="w-100" (click)="add(item.Id)">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="offcanvas offcanvas-end"
+  tabindex="-1"
+  id="offcanvasRight"
+  aria-labelledby="offcanvasRightLabel"
+  style="width: 100%"
+>
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel">Shopping Cart</h5>
+    <button
+      type="button"
+      class="btn-close text-reset"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="row">
+      <div class="col-12">
+        <div class="cart-items" *ngFor="let DATA of cartdata">
+          <div class="row itemsrow">
+            <div class="col-6">
+              <div class="content-img">
+                <img
+                  src={{DATA.Image}}
+                  class="cartimg"
+                  alt=""
+                />
+                <div class="title m-4">
+                  <h2>
+                    {{DATA.Name}}
+                  </h2>
+
+                  <button class="decrease" (click)="dec(DATA.Id)">--</button
+                  ><span>&nbsp; {{DATA.Quantity}} &nbsp;</span
+                  ><button class="increase" (click)="inc(DATA.Id)">+</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="price-content m-4">
+                <h2>Price :  ₹ 200</h2>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="col-12">
+        
+          <div class="total-price">
+            
+            <h2>Subtotal : <span class="text-danger"><b>₹ 200</b></span></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
