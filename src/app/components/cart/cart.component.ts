@@ -57,6 +57,6 @@ export class CartComponent {
     });
   }
   dec(ID: any) {
-    console.log(ID);
+    
   }
 }
